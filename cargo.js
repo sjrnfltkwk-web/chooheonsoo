@@ -29,7 +29,8 @@ function columns() {
 function justify() {
   document.querySelectorAll('gallery-justify').forEach(g => {
     g.querySelectorAll('.br').forEach(b => b.remove());
-    const m = root.classList.contains('mobile'), W = g.clientWidth;
+    // clientWidth rounds (1338.5 -> 1339) and a row filled to it wraps; use the fractional width minus 1px
+    const m = root.classList.contains('mobile'), W = g.getBoundingClientRect().width - 1;
     const gap = len((m && g.getAttribute('mobile-gutter')?.split(' ')[0]) || g.getAttribute('gutter') || '1rem', W);
     const target = len((m && g.getAttribute('mobile-row-height')) || g.getAttribute('row-height') || '25%', W);
     const items = [...g.querySelectorAll(':scope > .mi')];

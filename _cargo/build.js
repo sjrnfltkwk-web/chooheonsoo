@@ -30,6 +30,11 @@ const FIXES = [
   ['search-1', '검색/ Search', '검색 / Search'],
   ['0-1-dgree', '1080x1920', '1080 x 1920'],
   ['brain', 'Never Die', 'Never Dies'],
+  // confirmed by the artist: the artist's name is Yoon-Jeong Han, momentum was 2024
+  ['see-unseen', 'Yoon Chung Han', 'Yoon-Jeong Han'],
+  ['la_sylfid', 'Yoon Chung Han', 'Yoon-Jeong Han'],
+  ['moment', '(2023)은', '(2024)은'],
+  ['about', /2023\s*–\s*sense collective\. sense collection: momentum\. 2025\. Platform-L, Seoul/, '2024 – sense collective. sense collection: momentum. Platform-L, Seoul'],
 ];
 // One menu for every page that has one: same size, order and alignment, never wraps.
 const NAV = (color, lead = '') => `<div style="text-align: center"><h1 class="nav" style="--font-scale: 0.53;">${lead}${
