@@ -1,0 +1,97 @@
+// Rebuilds the Cargo site as static pages: _cargo/<page>.json + site.css -> ../<page>.html, ../media/<hash>.webp
+// Run: node _cargo/build.js   (downloads missing media once)
+const fs = require('fs'), path = require('path');
+const ROOT = path.join(__dirname, '..');
+const PAGES = ['main', 'project', 'about', 'see-unseen', 'moment', 'la_sylfid', 'seoul', 'paperman', 'the-perfect-routine',
+  'remains', 'green', 'zombie-wants-to-be', 'search-1', '0-1-dgree', 'problem', 'brain'];
+// Vimeo subscription lapsed: its embeds are replaced by YouTube ids or self-hosted loops.
+const VIDEO = {
+  '1152781603': 'yt:79VEybXXYPc', '1113059706': 'yt:-LkwQWKkje0', '1113059399': 'yt:3dCncQZ2AFQ', '1113058525': 'yt:BkwdueseDlw',
+  '1123541604': 'yt:ONVxyIfB2CM', '1113057759': 'yt:qoDitlJvJJ4',
+  '1125583697': 'video/hallucigenia.mp4', '1125584446': 'video/anomalocaris.mp4', '1125584753': 'video/dickinsonia.mp4',
+};
+const ICON = { 'leftwards-arrow': '←', 'upwards-arrow': '↑', 'rightwards-arrow': '→', 'downwards-arrow': '↓' };
+const attrs = tag => Object.fromEntries([...tag.matchAll(/([\w-]+)(?:="([^"]*)")?/g)].slice(1).map(m => [m[1], m[2] ?? '']));
+const downloads = new Map();
+
+const media = (tag, byHash, inner = '') => {
+  const a = attrs(tag), m = byHash[a.hash];
+  if (!m) return '';
+  if (m.is_url) {
+    const id = (m.url.match(/(\d{6,})/) || [])[1], v = VIDEO[id];
+    if (!v) return '';
+    return v.startsWith('yt:')
+      ? `<span class="mi video"><iframe src="https://www.youtube-nocookie.com/embed/${v.slice(3)}?rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="video"></iframe></span>`
+      : `<span class="mi video vertical"><video src="${v}" autoplay muted loop playsinline controls></video></span>`;
+  }
+  const file = `media/${m.hash}.webp`;
+  downloads.set(file, `https://freight.cargo.site/w/${Math.min(m.width, 2400)}/q/88/f/webp/i/${m.hash}/${encodeURIComponent(m.name)}`);
+  const style = [a.scale && a.scale !== '100' ? `width:${/%|rem/.test(a.scale) ? a.scale : a.scale + '%'}` : '', a['media-style'] || ''].filter(Boolean).join(';');
+  const zoom = /zoomable/.test(a.class || '') && a['disable-zoom'] !== 'true';
+  const img = `<img src="${file}" width="${m.width}" height="${m.height}" alt="" loading="lazy" decoding="async"${zoom ? ' data-zoom' : ''}>`;
+  const pic = a.href ? `<a href="${a.href}">${img}</a>` : img;
+  const free = ['freeform-x', 'freeform-y', 'freeform-scale', 'freeform-z'].filter(k => a[k]).map(k => ` data-${k}="${a[k]}"`).join('');
+  return `<span class="mi" data-w="${m.width}" data-h="${m.height}"${a['justify-row-end'] === 'true' ? ' data-end' : ''}${free}${style ? ` style="${style}"` : ''}>${pic}${inner}</span>`;
+};
+
+const convert = (html, byHash) => html
+  .replace(/(<media-item\b[^>]*>)([\s\S]*?)<\/media-item>/g, (_, t, inner) => media(t, byHash, inner.trim()))
+  .replace(/<text-icon icon="([\w-]+)"><\/text-icon>/g, (_, i) => `<span class="ti">${ICON[i] || ''}</span>`);
+
+// Cargo scales mobile paddings by --mobile-padding-offset (1.32); horizontal page padding only.
+const mobileCss = css => css.replace(/([^{}]+)\{([^}]*)\}/g, (_, sel, body) => {
+  const pads = [...body.matchAll(/padding(-left|-right)?:\s*([\d.]+)rem/g)].map(([, side, v]) =>
+    side ? `padding${side}: ${(v * 1.32).toFixed(2)}rem` : `padding-left: ${(v * 1.32).toFixed(2)}rem; padding-right: ${(v * 1.32).toFixed(2)}rem`);
+  return pads.length && /page-content/.test(sel) ? `.mobile ${sel.trim()} { ${pads.join('; ')} }\n` : '';
+});
+
+const site = fs.readFileSync(path.join(__dirname, 'site.css'), 'utf8').replace(/"Diatype Variable"/g, '"Pretendard Variable", Pretendard, sans-serif')
+  // Cargo drives every text style through --font-size so an inline --font-scale multiplies it
+  .replace(/font-size:\s*([\d.]+rem);/g, '--font-size: $1; font-size: calc(var(--font-scale, 1) * var(--font-size));');
+fs.writeFileSync(path.join(ROOT, 'site.css'), site);
+
+for (const p of PAGES) {
+  const d = JSON.parse(fs.readFileSync(path.join(__dirname, p + '.json'), 'utf8'));
+  const byHash = Object.fromEntries(d.media.map(m => [m.hash, m]));
+  const bd = d.backdrops || {}, grad = bd.activeBackdrop === 'gradient' && bd.backdropSettings?.gradient?.['color-one'];
+  const title = p === 'main' ? 'chooheonsoo' : `${d.title} — chooheonsoo`;
+  const out = `<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${title}</title>
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="cargo.css">
+<link rel="stylesheet" href="site.css">
+<style>
+${d.local_css || ''}
+${mobileCss(d.local_css || '')}${grad ? `body { background-color: ${grad}; }` : ''}
+</style>
+<script src="cargo.js" defer></script>
+</head>
+<body class="${p === 'main' ? 'home' : ''}">
+<div class="content">
+<div class="page" id="${d.id}"><div class="page-layout"><div class="page-content"><bodycopy>
+${convert(d.content, byHash)}
+</bodycopy></div></div></div>
+</div>
+</body>
+</html>
+`;
+  fs.writeFileSync(path.join(ROOT, p + '.html'), out);
+  if (p === 'main') fs.writeFileSync(path.join(ROOT, 'index.html'), out);
+}
+
+(async () => {
+  let n = 0;
+  for (const [file, url] of downloads) {
+    const out = path.join(ROOT, file);
+    if (fs.existsSync(out)) continue;
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    const r = await fetch(url); if (!r.ok) { console.log('FAIL', r.status, url); continue; }
+    fs.writeFileSync(out, Buffer.from(await r.arrayBuffer())); n++;
+  }
+  console.log('pages', PAGES.length, 'media', downloads.size, 'downloaded', n);
+})();

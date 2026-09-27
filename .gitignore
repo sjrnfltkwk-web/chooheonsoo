@@ -1,2 +1,16 @@
-# Cargo 이전용 원본·스크립트 (사이트에 안 쓰임)
-_cargo/
+# Cargo 원본 데이터: 빌드에 필요한 것만 추적
+_cargo/*
+!_cargo/build.js
+!_cargo/site.css
+!_cargo/[a-z0-9]*-*.json
+!_cargo/main.json
+!_cargo/project.json
+!_cargo/about.json
+!_cargo/moment.json
+!_cargo/seoul.json
+!_cargo/brain.json
+!_cargo/green.json
+!_cargo/problem.json
+!_cargo/remains.json
+!_cargo/paperman.json
+!_cargo/la_sylfid.json
