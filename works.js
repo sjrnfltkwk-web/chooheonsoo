@@ -32,11 +32,6 @@ const WORKS = [
     },
     "images": [
       {
-        "src": "img/paperman/00.webp",
-        "w": 1536,
-        "h": 2752
-      },
-      {
         "src": "img/paperman/01.webp",
         "w": 1728,
         "h": 2592
@@ -133,11 +128,6 @@ const WORKS = [
       "h": 2752
     },
     "images": [
-      {
-        "src": "img/the-perfect-routine/00.webp",
-        "w": 1536,
-        "h": 2752
-      },
       {
         "src": "img/the-perfect-routine/01.webp",
         "w": 1920,
@@ -279,11 +269,6 @@ const WORKS = [
     },
     "images": [
       {
-        "src": "img/remains/00.webp",
-        "w": 1080,
-        "h": 1920
-      },
-      {
         "src": "img/remains/01.webp",
         "w": 1920,
         "h": 1080
@@ -362,11 +347,6 @@ const WORKS = [
     },
     "images": [
       {
-        "src": "img/green/00.webp",
-        "w": 1080,
-        "h": 1920
-      },
-      {
         "src": "img/green/01.webp",
         "w": 2560,
         "h": 1440
@@ -443,11 +423,6 @@ const WORKS = [
       "h": 1920
     },
     "images": [
-      {
-        "src": "img/zombie-wants-to-be/00.webp",
-        "w": 1080,
-        "h": 1920
-      },
       {
         "src": "img/zombie-wants-to-be/01.webp",
         "w": 1920,
@@ -537,11 +512,6 @@ const WORKS = [
       "h": 1920
     },
     "images": [
-      {
-        "src": "img/search-1/00.webp",
-        "w": 1080,
-        "h": 1920
-      },
       {
         "src": "img/search-1/01.webp",
         "w": 1920,
@@ -640,11 +610,6 @@ const WORKS = [
     },
     "images": [
       {
-        "src": "img/0-1-dgree/00.webp",
-        "w": 1080,
-        "h": 1920
-      },
-      {
         "src": "img/0-1-dgree/01.webp",
         "w": 1080,
         "h": 1920
@@ -695,11 +660,6 @@ const WORKS = [
       "h": 1920
     },
     "images": [
-      {
-        "src": "img/problem/00.webp",
-        "w": 1080,
-        "h": 1920
-      },
       {
         "src": "img/problem/01.webp",
         "w": 1920,
@@ -785,11 +745,6 @@ const WORKS = [
     },
     "images": [
       {
-        "src": "img/brain/00.webp",
-        "w": 1536,
-        "h": 2752
-      },
-      {
         "src": "img/brain/01.webp",
         "w": 1684,
         "h": 1190
@@ -866,11 +821,6 @@ const WORKS = [
     },
     "images": [
       {
-        "src": "img/see-unseen/00.webp",
-        "w": 5684,
-        "h": 1080
-      },
-      {
         "src": "img/see-unseen/01.webp",
         "w": 5684,
         "h": 1080
@@ -942,11 +892,6 @@ const WORKS = [
       "h": 1920
     },
     "images": [
-      {
-        "src": "img/moment/00.webp",
-        "w": 1920,
-        "h": 1920
-      },
       {
         "src": "img/moment/01.webp",
         "w": 1920,

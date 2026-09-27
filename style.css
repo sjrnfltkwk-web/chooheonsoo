@@ -10,7 +10,7 @@
 body {
   background: var(--wall); color: var(--ink);
   font: 400 13.5px/1.75 "Pretendard Variable", Pretendard, system-ui, sans-serif;
-  word-break: keep-all; overflow-wrap: anywhere;
+  word-break: keep-all; overflow-wrap: anywhere; overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 img, video { display: block; max-width: 100%; height: auto; }
@@ -52,8 +52,14 @@ footer { padding: 120px var(--pad) var(--pad); color: var(--mute); }
 .text { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 64px; }
 .text.single { grid-template-columns: minmax(0, 560px); justify-content: center; }
 .text p + p { margin-top: 1.1em; }
-.gallery { columns: 3 240px; column-gap: 12px; margin-top: 96px; }
-.gallery button { display: block; width: 100%; margin-bottom: 12px; border: 0; background: none; cursor: zoom-in; break-inside: avoid; }
+.gallery { margin-top: 96px; }
+.row { display: flex; gap: 12px; width: var(--w); margin-top: 12px; }
+.row.loose { margin-block: clamp(56px, 9vw, 140px); }
+.row.end { margin-left: auto; }
+.row.center { margin-inline: auto; }
+.row.bleed { width: auto; margin-inline: calc(50% - 50vw); }
+.row button { min-width: 0; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.row img { width: 100%; }
 dialog { width: 100vw; height: 100dvh; max-width: none; max-height: none; border: 0; background: var(--wall); }
 dialog::backdrop { background: var(--wall); }
 dialog img { width: 100%; height: 100%; object-fit: contain; padding: var(--pad); cursor: zoom-out; }
@@ -70,6 +76,8 @@ dialog img { width: 100%; height: 100%; object-fit: contain; padding: var(--pad)
 
 @media (max-width: 700px) {
   .text { grid-template-columns: 1fr; }
+  .row:not(.bleed) { width: 100%; }
+  .row.loose { margin-block: 48px; }
   .videos.v3 { grid-template-columns: 1fr 1fr; }
   .pano .strip { aspect-ratio: 16 / 7; }
 }
