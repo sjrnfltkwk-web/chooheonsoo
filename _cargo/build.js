@@ -10,6 +10,46 @@ const VIDEO = {
   '1123541604': 'yt:ONVxyIfB2CM', '1113057759': 'yt:qoDitlJvJJ4',
   '1125583697': 'video/hallucigenia.mp4', '1125584446': 'video/anomalocaris.mp4', '1125584753': 'video/dickinsonia.mp4',
 };
+// Corrections applied on top of the Cargo content (source JSON stays untouched): [page, from, to]
+const FIXES = [
+  ['about', '하고있다', '하고 있다'],
+  ['about', '환기하고자 합니다.', '환기하고자 한다.'],
+  ['about', 'they serve', 'They serve'],
+  ['about', 'Exhabition', 'Exhibition'],
+  ['see-unseen', /Gwanghwa\s*,\s*Sejong\s*, Korea/, 'Gwanghwa, Sejong, Korea'],
+  ['see-unseen', '생동감있는', '생동감 있는'],
+  ['la_sylfid', 'Paradais city ,', 'Paradise City,'],
+  ['la_sylfid', '’실피드‘', '‘실피드’'],
+  ['seoul', 'artechnolozy', 'artechnology'],
+  ['the-perfect-routine', 'Midjourney(AI Generated)', 'Midjourney (AI Generated)'],
+  ['the-perfect-routine', '1920x1080 (px), 02’59”', '1920 x 1080 (px), 02’ 59”'],
+  ['the-perfect-routine', '시도다.<br />\n\n.<br />', '시도다.<br />'],
+  ['the-perfect-routine', /\sㅅ<br \/>/, '<br />'],
+  ['search-1', /\sㅅ<br \/>/, '<br />'],
+  ['remains', '여정/ What remains', '여정 / What remains'],
+  ['search-1', '검색/ Search', '검색 / Search'],
+  ['0-1-dgree', '1080x1920', '1080 x 1920'],
+  ['brain', 'Never Die', 'Never Dies'],
+];
+// One menu for every page that has one: same size, order and alignment, never wraps.
+const NAV = (color, lead = '') => `<div style="text-align: center"><h1 class="nav" style="--font-scale: 0.53;">${lead}${
+  [['main', 'Artwork'], ['project', 'Project'], ['about', 'About']].map(([h, t]) =>
+    `<a href="${h}" rel="history"${color ? ` style="color: ${color};"` : ''}>${t}</a>`).join('&nbsp; &nbsp; &nbsp;')}</h1></div>`;
+const NAV_AT = {
+  // main keeps Cargo's empty first line above the menu
+  main: [/<div style="text-align: center"><h1 style="--font-scale: 0\.53;">[\s\S]*?<\/h1><\/div>/, NAV('', '<a class="no-wrap" href="main" rel="history"><br /></a>')],
+  // project's back arrow above the menu is dropped (the menu already links home) so the menu sits where it does on main
+  project: [/^[\s\S]*?<h1>[\s\S]*?<\/h1>/, NAV('rgba(255, 255, 255, 0.85)', '<a class="no-wrap" href="main" rel="history"><br /></a>') + '<br />\n<br />\n<br />'],
+};
+const fix = (p, html) => {
+  for (const [page, from, to] of FIXES) if (page === p) {
+    const hit = from instanceof RegExp ? from.test(html) : html.includes(from);
+    if (!hit) throw new Error(`fix not found in ${p}: ${from}`);
+    html = from instanceof RegExp ? html.replace(from, to) : html.split(from).join(to);
+  }
+  if (NAV_AT[p]) { if (!NAV_AT[p][0].test(html)) throw new Error(`nav not found in ${p}`); html = html.replace(...NAV_AT[p]); }
+  return html;
+};
 const ICON = { 'leftwards-arrow': '←', 'upwards-arrow': '↑', 'rightwards-arrow': '→', 'downwards-arrow': '↓' };
 const attrs = tag => Object.fromEntries([...tag.matchAll(/([\w-]+)(?:="([^"]*)")?/g)].slice(1).map(m => [m[1], m[2] ?? '']));
 const downloads = new Map();
@@ -74,7 +114,7 @@ ${mobileCss(d.local_css || '')}${grad ? `body { background-color: ${grad}; }` : 
 <body class="${p === 'main' ? 'home' : ''}">
 <div class="content">
 <div class="page" id="${d.id}"><div class="page-layout"><div class="page-content"><bodycopy>
-${convert(d.content, byHash)}
+${convert(fix(p, d.content), byHash)}
 </bodycopy></div></div></div>
 </div>
 </body>

@@ -36,6 +36,7 @@ gallery-slideshow { display: block; width: 100%; cursor: pointer; }
 .mi .hover-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 1rem; opacity: 0; transition: opacity .2s; pointer-events: none; }
 .mi:hover .hover-text { opacity: 1; }
 .icon-link { text-decoration: none !important; }
+h1.nav { white-space: nowrap; }
 .ti { font-family: system-ui, sans-serif; }
 [data-zoom] { cursor: zoom-in; }
 
