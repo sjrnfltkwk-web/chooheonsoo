@@ -14,8 +14,8 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { background: var(--wall); }
 body {
-  font: 500 17px/1.15 "Pretendard Variable", Pretendard, system-ui, sans-serif;
-  letter-spacing: -.005em; color: var(--ink);
+  font: 500 17px/1.2 "Noto Serif KR", "Source Han Serif K", "Noto Serif CJK KR", serif;
+  color: var(--ink);
   word-break: keep-all; overflow-wrap: anywhere; overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
@@ -45,8 +45,8 @@ li { list-style: none; }
 .rule { border-top: 1px solid var(--rule); padding-top: 6px; }
 .l4 { grid-column: span 4; } .r8 { grid-column: span 8; } .r7 { grid-column: 5 / span 7; }
 .head { padding: 16px 0 72px; }
-.title { font-weight: 600; font-size: 21px; line-height: 1.1; letter-spacing: -.01em; }
-.detail { margin: 16px 0 0 2px; padding: 4px 0 4px 20px; border-left: 1px solid var(--rule); font-size: 13px; line-height: 1.35; color: var(--lt); font-weight: 450; }
+.title { font-weight: 600; font-size: 22px; line-height: 1.2; }
+.detail { margin: 16px 0 0 2px; padding: 4px 0 4px 20px; border-left: 1px solid var(--rule); font-size: 13px; line-height: 1.5; color: var(--lt); font-weight: 400; }
 .view { display: inline-block; margin-top: 18px; }
 .view:hover, .back:hover { color: var(--lt); }
 .item { padding-bottom: 64px; }
@@ -65,7 +65,7 @@ li { list-style: none; }
 .jrow button { min-width: 0; padding: 0; border: 0; background: none; cursor: zoom-in; }
 .jrow img { width: 100%; }
 .text { margin-top: 96px; }
-.text .cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gut); font-size: 14px; line-height: 1.6; font-weight: 400; }
+.text .cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gut); font-size: 14.5px; line-height: 1.8; font-weight: 400; }
 .text p + p { margin-top: 1em; }
 .text [lang=en] { color: var(--lt2); }
 .foot { margin-top: 96px; }
@@ -77,7 +77,7 @@ dialog img { width: 100%; height: 100%; object-fit: contain; padding: var(--pad)
 .info { margin-top: 0; min-height: 100vh; padding-top: 72px; background: #fff; color: var(--ink); }
 .info .cap, .info .detail { color: rgb(0 0 0 / .5); }
 .info .detail { border-color: rgb(0 0 0 / .15); }
-.info .body { font-size: 14px; line-height: 1.6; font-weight: 400; }
+.info .body { font-size: 14.5px; line-height: 1.8; font-weight: 400; }
 .info .body p + p { margin-top: 1em; }
 .info .portrait { width: 70%; mix-blend-mode: multiply; margin-top: 40px; }
 .info .cv { margin-top: 96px; row-gap: 40px; }
