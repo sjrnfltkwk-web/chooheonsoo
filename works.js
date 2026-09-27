@@ -12,11 +12,9 @@ const WORKS = [
     ],
     "ko": [
       "어릴 적 가졌던 '사라짐'에 대한 공포는 저를 완벽한 질서의 세계로 숨게 했습니다.",
-      "하지만 최근 퇴사 후 아버지의 공장에서 50장의 자화상을 그리며,",
-      "저는 통제할 수 없는 내면의 해방인 '괴물'을 마주했습니다.",
+      "하지만 최근 퇴사 후 아버지의 공장에서 50장의 자화상을 그리며, 저는 통제할 수 없는 내면의 해방인 '괴물'을 마주했습니다.",
       "그림 속 50명의 '나'를 뒤집어쓰는 순간, 저는 과거의 꿈과 현재의 방황이 뒤섞인 미지의 존재로 다시 태어납니다.",
-      "이 작업은 익숙한 공장이라는 공간에서 사라질지 모를 나를 붙잡고,",
-      "진정한 내 인생의 길을 찾아 나서는 가장 개인적이고도 솔직한 여행입니다."
+      "이 작업은 익숙한 공장이라는 공간에서 사라질지 모를 나를 붙잡고, 진정한 내 인생의 길을 찾아 나서는 가장 개인적이고도 솔직한 여행입니다."
     ],
     "en": [
       "The childhood fear of \"disappearing\" once drove me to seek refuge in a world of absolute order.",
@@ -104,14 +102,12 @@ const WORKS = [
       "점차 스스로 계획하지 않고, 대신 누군가 혹은 무언가가 정해준 “완벽한 루틴”을 따르는 일상이 자연스러워졌다.",
       "이 작품은 'AI에 대한 신앙적 맹신'이라는 현상을 영상적 의례 형식으로 탐구한다.",
       "거대한 인공지능은 등장하지 않지만, 우리 인간을 그려내며 배경의 목소리는 매일의 행동을 경건한 규칙처럼 명령한다.",
-      "처음엔 효율적이고 매끄러운 루틴 영상으로 보이지만,",
-      "어느 순간부터 할루시네이션처럼 불합리하고 모순적인 지시들이 끼어들기 시작한다.",
+      "처음엔 효율적이고 매끄러운 루틴 영상으로 보이지만, 어느 순간부터 할루시네이션처럼 불합리하고 모순적인 지시들이 끼어들기 시작한다.",
       "그러나 이 인공지능은 흔들림 없이 말한다. “나를 믿으면, 완벽한 미래가 당신의 것이 될 것”이라고.",
       "개인적으로 나는 종종 인공지능에게 하루 계획을 묻고, 삶의 방향에 대한 답을 찾으며 스스로도 이 의존의 감각을 느낀다.",
       "그 익숙하고 달콤한 의탁의 감정은, 오히려 불안과 공허의 기원이기도 하다.",
       "이 작업은 그러한 감정에서 출발했다.",
-      "인간이 신 대신 인공지능에게 삶에 대한 방향을 묻는 시대,",
-      "그 새로운 믿음의 형식을 시각적으로 재현하기 위한 시도다."
+      "인간이 신 대신 인공지능에게 삶에 대한 방향을 묻는 시대, 그 새로운 믿음의 형식을 시각적으로 재현하기 위한 시도다."
     ],
     "en": [
       "Modern humans are becoming more like \"path-followers\" than \"thinking beings.\" We live our lives accepting advice from AI, even regarding the weather, our diet, our daily routines, and even our emotional management.",
@@ -241,17 +237,14 @@ const WORKS = [
     ],
     "ko": [
       "What remains(2025)은 치매를 단순한 질환이 아니라 시간의 구조적 문제로 바라본다.",
-      "할머니와의 반복된 통화 속에서 기억의 소실은 단순한 망각이 아니라,",
-      "이미 지나온 순간으로 되돌아가는 시간의 루프처럼 느껴졌다.",
+      "할머니와의 반복된 통화 속에서 기억의 소실은 단순한 망각이 아니라, 이미 지나온 순간으로 되돌아가는 시간의 루프처럼 느껴졌다.",
       "애니메이션 속 로봇은 머릿속에서 기억을 꺼내 연료처럼 소비하며 앞으로 나아간다. 기억은 곧 생명의 에너지이며, 과거의 경험이 삶의 방향과 목적을 제공한다. 이 기억은 빛으로 시각화되었다. 밝을 때는 선명하지만 점차 사라지는 모습은 기억의 본질을 닮아 있다.",
-      "영상의 전체적인 채도는 희미하고 낡은 시간성을 표현하지만,",
-      "기억만은 따뜻하고 생생한 빛으로 그려져 생명력을 상징한다.",
+      "영상의 전체적인 채도는 희미하고 낡은 시간성을 표현하지만, 기억만은 따뜻하고 생생한 빛으로 그려져 생명력을 상징한다.",
       "마지막 장면에서 로봇은 모든 기억을 소진한 뒤 붕괴하고, 그 안에서 어린 시절의 자아가 걸어나와 지나온 길을 역행한다. 이는 시간의 단방향적 흐름이 뒤집히는 순간이며, 기억의 끝이 새로운 시작이 될 수 있음을 암시한다.",
       "이 작업은 비극과 희극 사이에 머문다. 치매는 분명 고통스럽지만, 나는 그것을 순수로의 회귀로도 보았다. 작품은 해답을 주기보다 관객에게 “이 로봇은 슬픈가, 아니면 행복할 수도 있는가?”라는 질문을 남긴다. 궁극적으로 What remains는 죽음이 아니라 기억의 순환과 재생의 가능성을 다룬다."
     ],
     "en": [
-      "What remains(2025) does not merely depict dementia as a pathological condition,",
-      "but begins with a perception of time’s structure.",
+      "What remains(2025) does not merely depict dementia as a pathological condition, but begins with a perception of time’s structure.",
       "Through repeated phone calls with my grandmother, I felt that her illness was not only about memory loss, but also about time itself looping back, as though she were returning to moments already lived.",
       "This idea shaped the behavior of the robot in the animation. The robot extracts memories from its head and consumes them as fuel to move forward. Memories become the very energy of life, the past experiences that give us purpose and direction.",
       "I visualized them as light. Vivid when bright, but gradually fading, mirroring the nature of memory. While the overall palette of the work is muted and faltering to evoke the sense of aged time, memories appear as warm and vivid light, embodying vitality.",
@@ -325,11 +318,9 @@ const WORKS = [
       "2024 / Single-channel video, color, sound / 1920 x 1080 (px), 04’ 31”"
     ],
     "ko": [
-      "푸르름이 사라진 정원에서(2024)는 인류가 사라진 뒤 지구의 생태계 회복을 상상한다. 처음에는 환경 문제를 단순히 ‘오염’으로 이해했지만,",
-      "반복되는 재해 속에서 지구가 인간을 밀어내는 면역 반응처럼 느껴졌다.",
+      "푸르름이 사라진 정원에서(2024)는 인류가 사라진 뒤 지구의 생태계 회복을 상상한다. 처음에는 환경 문제를 단순히 ‘오염’으로 이해했지만, 반복되는 재해 속에서 지구가 인간을 밀어내는 면역 반응처럼 느껴졌다.",
       "작품은 폐허가 된 도시와 기능을 잃은 로봇들로 시작한다. 이들은 인간이 남긴 오염의 잔재이며, 그 속에 자연이 불러낸 괴물 ‘A’가 나타난다. ‘A’는 로봇을 흡수해 식물로 바꾸며 생태계를 재편하고, 파괴자가 아니라 회복자로 기능한다.",
-      "이 작업을 통해 나는 “우리가 남기는 흔적은 무엇인가?”라는 질문을 던지고자 했다. 단순한 SF를 넘어, 인간이 사라진 뒤 지구가 어떻게 스스로 회복하고 재구성할 수 있는지를",
-      "감각적으로 사유하는 작품이다."
+      "이 작업을 통해 나는 “우리가 남기는 흔적은 무엇인가?”라는 질문을 던지고자 했다. 단순한 SF를 넘어, 인간이 사라진 뒤 지구가 어떻게 스스로 회복하고 재구성할 수 있는지를 감각적으로 사유하는 작품이다."
     ],
     "en": [
       "In a World Where Green Has Disappeared(2024) envisions the ecological recovery of the Earth after the disappearance of humankind. At first, I understood environmental issues simply as a matter of “pollution,” but through recurring disasters, I gradually felt that the Earth was pushing humans away. It appeared less as a natural phenomenon and more like the immune response of the planet.",
@@ -485,16 +476,12 @@ const WORKS = [
       "2025 / Single-channel video, color, sound / 1920 x 1080 (px), 01’ 59”"
     ],
     "ko": [
-      "검색(2025)은 AI에 의존하는 현재의 인간 모습을 다루는 작업이다. 예전에는 인터넷에 존재하는 무분별한 정보를 인간이 직접 판단하고 선별해야 한다는 이야기가 많았고,",
-      "나 또한 그렇게 배워왔다. 그러나 지금 우리는 AI에게 질문을 던지고,",
-      "그것이 사실인지 아닌지조차 모른 채 그대로 과제로 제출하거나, 무비판적으로 사람들에게 퍼나르고 있다.",
-      "인간은 이제 AI로부터 더 유의미하고 정교한 답을 얻기 위해 ‘좋은 프롬프트’를 찾고,",
-      "단순한 계산부터 복잡한 사고까지 의존한다.",
+      "검색(2025)은 AI에 의존하는 현재의 인간 모습을 다루는 작업이다. 예전에는 인터넷에 존재하는 무분별한 정보를 인간이 직접 판단하고 선별해야 한다는 이야기가 많았고, 나 또한 그렇게 배워왔다. 그러나 지금 우리는 AI에게 질문을 던지고, 그것이 사실인지 아닌지조차 모른 채 그대로 과제로 제출하거나, 무비판적으로 사람들에게 퍼나르고 있다.",
+      "인간은 이제 AI로부터 더 유의미하고 정교한 답을 얻기 위해 ‘좋은 프롬프트’를 찾고, 단순한 계산부터 복잡한 사고까지 의존한다.",
       "이 모습은 마치 과거 신을 숭배하던 태도와 닮아 있다.",
       "결국 우리는 새로운 ‘권위’로서 AI를 믿고, 그것을 경배하는 존재가 되어가고 있다.",
       "이러한 현상을 꼭두각시 인형들이 거대한 존재를 모시는 의식으로 비유하여 작품을 제작했다.",
-      "인형들은 질문과 응답에 따라 움직이며,",
-      "스스로 사고하는 듯 보이지만 실상은 ‘위에서 내려오는 답변’을 받아 흉내 내는 것뿐이다.",
+      "인형들은 질문과 응답에 따라 움직이며, 스스로 사고하는 듯 보이지만 실상은 ‘위에서 내려오는 답변’을 받아 흉내 내는 것뿐이다.",
       "나는 이 장면을 통해 지식과 권위, 믿음의 구조가 AI 시대에 어떻게 재편되고 있는지를 드러내고자 했다."
     ],
     "en": [
@@ -577,15 +564,11 @@ const WORKS = [
     "ko": [
       "0.1도의 재조립은 고대 생물들이 겪었던 오해와 진실의 역사를 금속 로봇으로 재해석한 영상이다.",
       "수억 년 전 생명체의 불완전한 파편인 화석은 과학자들의 섣부른 추측과 오해 속에서 수십 년간 왜곡된 모습으로 존재했다.",
-      "이 로봇들은 현대 과학이 찾아낸 본연의 모습을 바탕으로",
-      "“쇠”라는 성질을 이용해 재조립된 결과물이다.",
-      "작품 제목처럼, 진실은 화석의 각도나 구조에 대한",
-      "아주 미세한 관점의 전환을 통해 비로소 완성되었다.",
-      "고생물 화석은 깨지기 쉬운 유기물이었지만,",
-      "오해를 바로잡은 진실은 하나의 금속처럼 견고하다.",
+      "이 로봇들은 현대 과학이 찾아낸 본연의 모습을 바탕으로 “쇠”라는 성질을 이용해 재조립된 결과물이다.",
+      "작품 제목처럼, 진실은 화석의 각도나 구조에 대한 아주 미세한 관점의 전환을 통해 비로소 완성되었다.",
+      "고생물 화석은 깨지기 쉬운 유기물이었지만, 오해를 바로잡은 진실은 하나의 금속처럼 견고하다.",
       "우리는 일상에서 가짜 뉴스, 섣부른 판단, 그리고 뿌리 깊은 편견에 둘러싸여 살아간다.",
-      "이로 인해 종종 이야기의 본질을 뒤집어 보거나, 파편으로 오해하고,",
-      "심지어 그 본질적인 가치를 잘못 판단하고 치부하기도 한다.",
+      "이로 인해 종종 이야기의 본질을 뒤집어 보거나, 파편으로 오해하고, 심지어 그 본질적인 가치를 잘못 판단하고 치부하기도 한다.",
       "이 견고한 금속 구조물들은 침묵 속에서 당신에게 묻는다.",
       "당신이 확신하는 그 사실이 혹시 0.1도만 비틀면 바로잡힐 수 있는 오해는 아닌지."
     ],
@@ -595,8 +578,7 @@ const WORKS = [
       "As the title suggests, the truth was finally completed through a very subtle shift in perspective regarding the fossil's angle or structure.",
       "Paleontological fossils were fragile organic matter, but the truth that corrected the misconception is as solid as metal.",
       "In our daily lives, we live surrounded by fake news, hasty judgments, and deep-seated prejudice. Due to this, we often flip the essence of a story on its head, mistake it for fragments, and even misjudge and dismiss its fundamental value.",
-      "These robust metal structures ask you in silence:",
-      "Is the fact you are certain of perhaps a misunderstanding that could be corrected with just a 0.1-degree shift?"
+      "These robust metal structures ask you in silence: Is the fact you are certain of perhaps a misunderstanding that could be corrected with just a 0.1-degree shift?"
     ],
     "videos": [
       "video/hallucigenia.mp4",
@@ -646,8 +628,7 @@ const WORKS = [
       "We’ve Had a Problem(2025) is an animation addressing Korea’s demographic crisis and the numbness surrounding it.",
       "Repeated warnings and statistics in the news have become so familiar that they no longer evoke emotion.",
       "This indifference itself became the most frightening reality to me, as it revealed a society unable to respond to its own collapse.",
-      "Through this lens, the work reflects on how routine actions, birth, labor, aging, and decline, are carried out almost unconsciously,",
-      "without questioning their meaning.",
+      "Through this lens, the work reflects on how routine actions, birth, labor, aging, and decline, are carried out almost unconsciously, without questioning their meaning.",
       "It asks what happens when human existence is reduced to numbers, cycles, and silent repetition.",
       "The work depicts society through mechanical, repetitive actions rather than a complex narrative."
     ],
@@ -724,8 +705,7 @@ const WORKS = [
     ],
     "ko": [
       "어릴 적부터 품어온 '사라짐'에 대한 근원적인 공포는 저를 디지털 영생의 기록으로 이끌었습니다.",
-      "육체는 유한하고 언젠가 소멸하지만,",
-      "내가 먹고, 듣고, 생각한 데이터는 영원히 남을 수 있지 않을까 하는 질문에서 이 작업은 시작되었습니다.",
+      "육체는 유한하고 언젠가 소멸하지만, 내가 먹고, 듣고, 생각한 데이터는 영원히 남을 수 있지 않을까 하는 질문에서 이 작업은 시작되었습니다.",
       "저는 뇌 모양의 USB에 저의 모든 일상을 백업하기 시작했습니다.",
       "이는 단순한 저장 장치를 넘어, 언젠가 저의 육체가 사라졌을 때 이 세상에 남겨질 '디지털 영혼'을 구축하는 과정입니다.",
       "이 기계 속의 뇌가 나보다 더 온전한 내가 될 미래를 상상하며, 저는 오늘도 소멸하지 않는 존재를 위한 업로드를 계속합니다."
@@ -800,16 +780,11 @@ const WORKS = [
     ],
     "ko": [
       "보이지 않는 바다 (Sea Unseen)는 플라스틱으로 뒤덮인 가상의 미래의 바다 풍경을 보여주는 멀티 채널 영상 작품이다.",
-      "영상은 겨울잠에서 깨어난 플라스틱 하이브리드 해양 생명체들이 하나씩 깨어나면서 위로 부유하고 자유롭게 헤엄치면서",
-      "바다 속에서 생동감있는 모습으로 움직이고 서로 연결되고 상호작용하고 교감하면서 보여지는 모습을 그린다.",
-      "영상 초반에 겨울의 차갑고 고요한 풍경 속에서 시작하여서,",
-      "점점 따뜻한 빛과 색채로 피어나는 생명과 희망을 담은 작품이다.",
-      "그리고 언뜻 보기에는 플라스틱 하이브리드 생명체들은 얼핏 보면 화려하고 이국적인 생명체처럼 보이지만,",
-      "각 생명체의 형태와 질감은 플라스틱의 인공적인 특성을 반영하고 있어 인류의 손길이 닿은 결과임을 은유적으로 나타낸다.",
+      "영상은 겨울잠에서 깨어난 플라스틱 하이브리드 해양 생명체들이 하나씩 깨어나면서 위로 부유하고 자유롭게 헤엄치면서 바다 속에서 생동감있는 모습으로 움직이고 서로 연결되고 상호작용하고 교감하면서 보여지는 모습을 그린다.",
+      "영상 초반에 겨울의 차갑고 고요한 풍경 속에서 시작하여서, 점점 따뜻한 빛과 색채로 피어나는 생명과 희망을 담은 작품이다.",
+      "그리고 언뜻 보기에는 플라스틱 하이브리드 생명체들은 얼핏 보면 화려하고 이국적인 생명체처럼 보이지만, 각 생명체의 형태와 질감은 플라스틱의 인공적인 특성을 반영하고 있어 인류의 손길이 닿은 결과임을 은유적으로 나타낸다.",
       "이는 인간의 무분별한 플라스틱 사용과 그로 인한 환경 오염이 초래할 수 있는 미래를 상징적으로 표현하고 있다.",
-      "하지만 영상 말미에는 플라스틱의 오염을 이겨내고 희망차게 새롭게 피어나는 희망의 모습을 보여주며",
-      "생명, 바다, 빛에 대한 이야기를 관객에게 선사할 것이다. 보이지 않는 바다 (Sea Unseen)는 단순히 시각적인 아름다움을 넘어서,",
-      "해양 생태계에 미치는 인간의 영향을 반추하게 만드는 메시지를 담고 있다.",
+      "하지만 영상 말미에는 플라스틱의 오염을 이겨내고 희망차게 새롭게 피어나는 희망의 모습을 보여주며 생명, 바다, 빛에 대한 이야기를 관객에게 선사할 것이다. 보이지 않는 바다 (Sea Unseen)는 단순히 시각적인 아름다움을 넘어서, 해양 생태계에 미치는 인간의 영향을 반추하게 만드는 메시지를 담고 있다.",
       "이 작품은 혹독한 계절 속에서도 생명은 끊임없이 자라나고, 생동감 있는 에너지가 주변을 감싸며 밝은 미래를 향해 나아간다는 메시지를 전한다."
     ],
     "en": [],
