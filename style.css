@@ -40,18 +40,18 @@ li { list-style: none; }
 
 /* TV wall intro: stage keeps the photo's aspect and covers the viewport, screens are placed in % of the photo */
 .tvwall { position: fixed; inset: 0; overflow: hidden; background: #04060b; }
-.stage { position: absolute; left: 50%; top: 50%; aspect-ratio: 2400 / 1357; width: max(100vw, 100vh * 2400 / 1357); transform: translate(-50%, -54%); }
+.stage { position: absolute; left: 50%; top: 50%; aspect-ratio: 2400 / 1357; width: max(100vw, 100vh * 2400 / 1357); transform: translate(-50%, -54%); isolation: isolate; }
 .room { width: 100%; height: 100%; }
-.screen { position: absolute; overflow: hidden; background: #cfe0ff; }
-.screen img, .screen video { width: 100%; height: 100%; object-fit: cover; filter: saturate(.75) contrast(1.08) brightness(1.08); }
-/* CRT: scanlines, bulge vignette, and the room's cold blue cast */
+/* Content is multiplied onto the photo's own lit screen, so its blue glow, grain and falloff show through.
+   Blacks are lifted like a real CRT so a dark frame still reads as a glowing tube. */
+.screen { position: absolute; overflow: hidden; border-radius: 9% / 12%; mix-blend-mode: multiply; }
+.screen img, .screen video { width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(.35) contrast(.78) brightness(1.3) blur(.4px); }
 .screen::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: repeating-linear-gradient(rgb(0 0 0 / .22) 0 1px, transparent 1px 3px),
-    radial-gradient(ellipse at center, transparent 55%, rgb(10 20 50 / .55) 100%),
-    rgb(120 160 255 / .16); mix-blend-mode: multiply; }
-.screen:hover img, .screen:hover video { filter: saturate(1) contrast(1.1) brightness(1.2); }
-.flick { animation: flick .18s steps(2); }
-@keyframes flick { 0% { filter: brightness(2.4) contrast(.6); } 100% { filter: none; } }
+  background: repeating-linear-gradient(rgb(0 0 0 / .12) 0 1px, transparent 1px 3px); }
+.screen:hover img, .screen:hover video { filter: grayscale(0) contrast(.85) brightness(1.4) blur(.4px); }
+.flick { animation: flick .16s steps(2); }
+@keyframes flick { 0% { opacity: .25; } 100% { opacity: 1; } }
 
 /* dark sheet with the list */
 .sheet { position: relative; z-index: 2; margin-top: 88vh; min-height: 100vh; background: var(--sheet); color: var(--lt); padding: 0 var(--pad) 120px; }

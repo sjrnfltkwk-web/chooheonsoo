@@ -49,6 +49,9 @@ const thumb = src => src.replace(/\/(\d+\.webp)$/, '/t/$1');
 const tvwall = () => {
   const html = SCREENS.map(({ q, w: slug, clip, from = 0 }) => {
     const w = WORKS.find(x => x.slug === slug);
+    // detected quads hug the brightest core; grow 8% from the centre so content reaches the bezel
+    const cx = q.reduce((s, p) => s + p[0], 0) / 4, cy = q.reduce((s, p) => s + p[1], 0) / 4;
+    q = q.map(([x, y]) => [cx + (x - cx) * 1.08, cy + (y - cy) * 1.08]);
     const xs = q.map(p => p[0]), ys = q.map(p => p[1]);
     const L = Math.min(...xs), T = Math.min(...ys), W = Math.max(...xs) - L, H = Math.max(...ys) - T;
     const poly = q.map(([x, y]) => `${((x - L) / W * 100).toFixed(1)}% ${((y - T) / H * 100).toFixed(1)}%`).join(',');
