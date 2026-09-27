@@ -38,6 +38,21 @@ li { list-style: none; }
 @keyframes drift { to { transform: translateX(-100%); } }
 @media (prefers-reduced-motion: reduce) { .drift { overflow-x: auto; } .drift .track { animation: none; } .drift .track + .track { display: none; } }
 
+/* TV wall intro: stage keeps the photo's aspect and covers the viewport, screens are placed in % of the photo */
+.tvwall { position: fixed; inset: 0; overflow: hidden; background: #04060b; }
+.stage { position: absolute; left: 50%; top: 50%; aspect-ratio: 2400 / 1357; width: max(100vw, 100vh * 2400 / 1357); transform: translate(-50%, -54%); }
+.room { width: 100%; height: 100%; }
+.screen { position: absolute; overflow: hidden; background: #cfe0ff; }
+.screen img, .screen video { width: 100%; height: 100%; object-fit: cover; filter: saturate(.75) contrast(1.08) brightness(1.08); }
+/* CRT: scanlines, bulge vignette, and the room's cold blue cast */
+.screen::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(rgb(0 0 0 / .22) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgb(10 20 50 / .55) 100%),
+    rgb(120 160 255 / .16); mix-blend-mode: multiply; }
+.screen:hover img, .screen:hover video { filter: saturate(1) contrast(1.1) brightness(1.2); }
+.flick { animation: flick .18s steps(2); }
+@keyframes flick { 0% { filter: brightness(2.4) contrast(.6); } 100% { filter: none; } }
+
 /* dark sheet with the list */
 .sheet { position: relative; z-index: 2; margin-top: 88vh; min-height: 100vh; background: var(--sheet); color: var(--lt); padding: 0 var(--pad) 120px; }
 .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gut); }
