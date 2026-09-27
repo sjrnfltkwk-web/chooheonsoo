@@ -2,7 +2,9 @@
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const url = w => `work.html?w=${w.slug}`;
-const pad = n => String(n).padStart(3, '0');
+// Wall-label caption: one size, titles in ink, facts in grey, one fact per line.
+const label = (w, tag = 'p', link) => { const t = esc(w.title) + (w.en_title ? '<br>' + esc(w.en_title) : '');
+  return `<${tag} class="label"><span class="t">${link ? `<a href="${link}">${t}</a>` : t}</span><br>${[w.year, ...w.meta].map(esc).join('<br>')}</${tag}>`; };
 const ratio = im => im.w / im.h;
 const pic = (im, alt, eager) => `<img src="${im.src}" width="${im.w}" height="${im.h}" alt="${esc(alt)}" ${eager ? '' : 'loading="lazy"'} decoding="async">`;
 // videos entry: "video/x.mp4" (self-hosted, loops silently) | 11-char YouTube id | Vimeo id
@@ -32,19 +34,16 @@ const HEIGHTS = [100, 76, 90, 62, 84, 70]; // % of the drift band, cycled so the
 const pages = {
   list(key) {
     const list = sections[key];
-    const track = list.map((w, i) => `<a href="${url(w)}" style="--h:${HEIGHTS[i % HEIGHTS.length]}%">${pic(w.cover, w.info[0], true)}</a>`).join('');
+    const track = list.map((w, i) => `<a href="${url(w)}" style="--h:${HEIGHTS[i % HEIGHTS.length]}%">${pic(w.cover, w.title, true)}</a>`).join('');
     $('.drift').innerHTML = `<div class="track">${track}</div><div class="track" aria-hidden="true">${track}</div>`;
     addEventListener('load', () => { const t = $('.drift .track'); document.querySelectorAll('.drift .track').forEach(x => x.style.setProperty('--t', t.scrollWidth / 40 + 's')); });
     $('.sheet').innerHTML = `
-      <div class="grid head"><div class="l4 rule"></div><div class="r7 rule"><p class="cap">000 / ${pad(list.length)}</p><h1 class="title">${key === 'artwork' ? 'Artwork' : 'Project'}</h1></div></div>
+      <div class="grid head"><div class="l4 rule"></div><div class="r8 rule"><h1 class="label"><span class="t">${key === 'artwork' ? 'Artwork' : 'Project'}</span></h1></div></div>
       ${list.map((w, i) => `
       <article class="grid item ${ratio(w.cover) > 1.5 ? 'wide' : ''}">
-        <div class="l4 rule"><a class="thumb" href="${url(w)}">${pic(w.cover, w.info[0])}</a></div>
+        <div class="l4 rule"><a class="thumb" href="${url(w)}">${pic(w.cover, w.title)}</a></div>
         <div class="r8 rule">
-          <p class="cap">${pad(i + 1)}</p>
-          <h2 class="title"><a href="${url(w)}">${esc(w.info[0])}</a></h2>
-          ${w.info.length > 1 ? `<p class="detail">${w.info.slice(1).map(esc).join('<br>')}</p>` : ''}
-          <a class="cap view" href="${url(w)}">[View...]</a>
+          ${label(w, 'h2', url(w))}
         </div>
       </article>`).join('')}`;
   },
@@ -54,29 +53,27 @@ const pages = {
   work() {
     const w = WORKS.find(x => x.slug === new URLSearchParams(location.search).get('w'));
     if (!w) { $('main').innerHTML = '<p class="sheet work">작품을 찾을 수 없어요. <a href="./">Artwork</a></p>'; return; }
-    document.title = `${w.info[0]} | Heon Soo Choo`;
+    document.title = `${w.title} | Heon Soo Choo`;
     const home = w.section === 'project' ? 'project.html' : './';
     document.querySelector(`.top nav a[href="${home}"]`)?.setAttribute('aria-current', 'page');
     const list = sections[w.section], i = list.indexOf(w), next = list[(i + 1) % list.length];
     const p = a => a.map(t => `<p>${esc(t)}</p>`).join('');
-    const vids = w.videos.map(v => video(v, w.info[0])).join('');
+    const vids = w.videos.map(v => video(v, w.title)).join('');
     $('main').innerHTML = `
       <article class="sheet work">
         <div class="grid">
           <div class="l4 rule">
-            <p class="cap">${pad(i + 1)} / ${pad(list.length)}</p>
-            <h1 class="title">${esc(w.info[0])}</h1>
-            ${w.info.length > 1 ? `<p class="detail">${w.info.slice(1).map(esc).join('<br>')}</p>` : ''}
+            ${label(w, 'h1')}
           </div>
           <div class="r8 rule media">
             ${w.videos.length === 3 ? `<div class="v3">${vids}</div>` : vids}
-            ${justify(w.images, w.info[0])}
+            ${justify(w.images, w.title)}
           </div>
         </div>
-        ${w.ko.length ? `<div class="grid text"><div class="l4 rule"><p class="cap">Text</p></div>
+        ${w.ko.length ? `<div class="grid text"><div class="l4 rule"></div>
           <div class="r8 rule cols"><div>${p(w.ko)}</div>${w.en.length ? `<div lang="en">${p(w.en)}</div>` : ''}</div></div>` : ''}
-        <div class="grid foot"><div class="l4 rule"><a class="cap back" href="${home}">Return to List of Works</a></div>
-          <div class="r8 rule"><p class="cap">Next</p><a class="title" href="${url(next)}">${esc(next.info[0])}</a></div></div>
+        <div class="grid foot"><div class="l4 rule"><a class="label" href="${home}">Return to list</a></div>
+          <div class="r8 rule"><a class="label" href="${url(next)}"><span class="t">Next</span><br>${esc(next.title)}</a></div></div>
       </article>
       <dialog><img alt=""></dialog>`;
     const dlg = $('dialog'), big = dlg.querySelector('img');

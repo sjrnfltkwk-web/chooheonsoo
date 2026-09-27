@@ -3,12 +3,12 @@ const WORKS = [
   {
     "slug": "paperman",
     "section": "artwork",
-    "title": "PaperMan",
-    "tag": "portrait",
-    "info": [
-      "이 얼굴들은 답을 알고 있을까",
-      "Do These Faces Know the Answer?",
-      "2025 / Performance, Photography, Drawing / Dimensions Variable"
+    "title": "이 얼굴들은 답을 알고 있을까",
+    "en_title": "Do These Faces Know the Answer?",
+    "year": "2025",
+    "meta": [
+      "Performance, photography, drawing",
+      "Dimensions variable"
     ],
     "ko": [
       "어릴 적 가졌던 '사라짐'에 대한 공포는 저를 완벽한 질서의 세계로 숨게 했습니다.",
@@ -90,11 +90,11 @@ const WORKS = [
     "slug": "the-perfect-routine",
     "section": "artwork",
     "title": "The Perfect Routine",
-    "tag": "obey",
-    "info": [
-      "The Perfect Routine",
-      "2025 / Single-channel video, color, sound, Midjourney(AI Generated)",
-      "1920x1080 (px), 02’59”"
+    "en_title": "",
+    "year": "2025",
+    "meta": [
+      "Single-channel video, color, sound, Midjourney (AI generated)",
+      "1920 × 1080 px, 2′59″"
     ],
     "ko": [
       "현대의 인간은 ‘생각하는 존재’이기보다 ‘경로를 따르는 존재’에 가까워지고 있다.",
@@ -229,11 +229,12 @@ const WORKS = [
   {
     "slug": "remains",
     "section": "artwork",
-    "title": "remains",
-    "tag": "dementia",
-    "info": [
-      "여정/ What remains",
-      "2025 / Single-channel video, color, sound / 1920 x 1080 (px), 02’ 17”"
+    "title": "여정",
+    "en_title": "What remains",
+    "year": "2025",
+    "meta": [
+      "Single-channel video, color, sound",
+      "1920 × 1080 px, 2′17″"
     ],
     "ko": [
       "What remains(2025)은 치매를 단순한 질환이 아니라 시간의 구조적 문제로 바라본다.",
@@ -311,11 +312,12 @@ const WORKS = [
   {
     "slug": "green",
     "section": "artwork",
-    "title": "green",
-    "tag": "junk&flower",
-    "info": [
-      "푸르름이 사라진 정원에서 / In a world where green has disappeared",
-      "2024 / Single-channel video, color, sound / 1920 x 1080 (px), 04’ 31”"
+    "title": "푸르름이 사라진 정원에서",
+    "en_title": "In a World Where Green Has Disappeared",
+    "year": "2024",
+    "meta": [
+      "Single-channel video, color, sound",
+      "1920 × 1080 px, 4′31″"
     ],
     "ko": [
       "푸르름이 사라진 정원에서(2024)는 인류가 사라진 뒤 지구의 생태계 회복을 상상한다. 처음에는 환경 문제를 단순히 ‘오염’으로 이해했지만, 반복되는 재해 속에서 지구가 인간을 밀어내는 면역 반응처럼 느껴졌다.",
@@ -387,11 +389,12 @@ const WORKS = [
   {
     "slug": "zombie-wants-to-be",
     "section": "artwork",
-    "title": "Zombie wants to be",
-    "tag": "Zombie",
-    "info": [
-      "좀비도 사람이 하고싶어 / Zombie wants to be",
-      "2025 / Single-channel video, color, sound / 1920 x 1080 (px), 02’ 26”"
+    "title": "좀비도 사람이 하고싶어",
+    "en_title": "Zombie Wants to Be",
+    "year": "2025",
+    "meta": [
+      "Single-channel video, color, sound",
+      "1920 × 1080 px, 2′26″"
     ],
     "ko": [
       "좀비도 사람이 하고싶어(2025)는 현대 사회의 양극화와 갈등을 다룬다. 사람들은 목소리를 높이고 서로 다른 진영을 형성하며, 끊임없이 맞서는 시위를 벌인다. 누군가는 하나의 진실을 주장하고, 다른 이는 또 다른 진실을 옹호하며, 대립은 끝없이 이어진다.",
@@ -469,11 +472,12 @@ const WORKS = [
   {
     "slug": "search-1",
     "section": "artwork",
-    "title": "search",
-    "tag": "puppet",
-    "info": [
-      "검색/ Search",
-      "2025 / Single-channel video, color, sound / 1920 x 1080 (px), 01’ 59”"
+    "title": "검색",
+    "en_title": "Search",
+    "year": "2025",
+    "meta": [
+      "Single-channel video, color, sound",
+      "1920 × 1080 px, 1′59″"
     ],
     "ko": [
       "검색(2025)은 AI에 의존하는 현재의 인간 모습을 다루는 작업이다. 예전에는 인터넷에 존재하는 무분별한 정보를 인간이 직접 판단하고 선별해야 한다는 이야기가 많았고, 나 또한 그렇게 배워왔다. 그러나 지금 우리는 AI에게 질문을 던지고, 그것이 사실인지 아닌지조차 모른 채 그대로 과제로 제출하거나, 무비판적으로 사람들에게 퍼나르고 있다.",
@@ -554,12 +558,12 @@ const WORKS = [
   {
     "slug": "0-1-dgree",
     "section": "artwork",
-    "title": "0.1 dgree",
-    "tag": "Hallucigenia, Anomalocaris, Dickinsonia",
-    "info": [
-      "0.1도의 재조립",
-      "The Reassembly of 0.1 Degree",
-      "2025 / Single-channel video, color, sound / 1080x1920 (px), 00’ 09”, 00’ 10”, 00’ 14”"
+    "title": "0.1도의 재조립",
+    "en_title": "The Reassembly of 0.1 Degree",
+    "year": "2025",
+    "meta": [
+      "Single-channel video, color, sound",
+      "1080 × 1920 px, 0′09″, 0′10″, 0′14″"
     ],
     "ko": [
       "0.1도의 재조립은 고대 생물들이 겪었던 오해와 진실의 역사를 금속 로봇으로 재해석한 영상이다.",
@@ -611,12 +615,12 @@ const WORKS = [
   {
     "slug": "problem",
     "section": "artwork",
-    "title": "problem",
-    "tag": "tower",
-    "info": [
-      "문제 발생",
-      "We’ve had a problem",
-      "2025 / Single-channel video, color, sound / 1920 x 1080 (px), 01’ 36”"
+    "title": "문제 발생",
+    "en_title": "We’ve Had a Problem",
+    "year": "2025",
+    "meta": [
+      "Single-channel video, color, sound",
+      "1920 × 1080 px, 1′36″"
     ],
     "ko": [
       "문제발생(2025)은 한국의 인구 위기와 그에 대한 무감각을 다룬 애니메이션이다. 뉴스 속 반복되는 경고와 통계는 이미 익숙해져, 더 이상 감정을 일으키지 못한다.",
@@ -696,12 +700,11 @@ const WORKS = [
   {
     "slug": "brain",
     "section": "artwork",
-    "title": "Brain",
-    "tag": "BRAIN",
-    "info": [
-      "영원히 사라지지 않을 나를 위하여",
-      "For the Version of Me That Never Die",
-      "2026 / Object / Installation, Photography"
+    "title": "영원히 사라지지 않을 나를 위하여",
+    "en_title": "For the Version of Me That Never Dies",
+    "year": "2026",
+    "meta": [
+      "Object, installation, photography"
     ],
     "ko": [
       "어릴 적부터 품어온 '사라짐'에 대한 근원적인 공포는 저를 디지털 영생의 기록으로 이끌었습니다.",
@@ -769,14 +772,13 @@ const WORKS = [
   {
     "slug": "see-unseen",
     "section": "project",
-    "title": "see unseen",
-    "tag": "",
-    "info": [
-      "Sea Unseen 보이지 않는 바다",
-      "2024 / Artwork by Yoon Chung Han",
-      "Participated as a 3D Camera, 3D layout",
-      "The Atelier Gwanghwa",
-      "Sejong, Korea"
+    "title": "보이지 않는 바다",
+    "en_title": "Sea Unseen",
+    "year": "2024",
+    "meta": [
+      "Artwork by Yoon Chung Han",
+      "3D camera, 3D layout",
+      "The Atelier Gwanghwa, Sejong"
     ],
     "ko": [
       "보이지 않는 바다 (Sea Unseen)는 플라스틱으로 뒤덮인 가상의 미래의 바다 풍경을 보여주는 멀티 채널 영상 작품이다.",
@@ -840,17 +842,16 @@ const WORKS = [
   {
     "slug": "moment",
     "section": "project",
-    "title": "moment",
-    "tag": "",
-    "info": [
-      "《Sense collection : Momentum》",
-      "2024",
-      "Director : Yukyung Chung",
-      "Sound : Jungmin Yoo, Sungjin Shin",
-      "Audio : Dongjin Park",
-      "3D Animation : Heonsoo Choo, Inmo Sung",
-      "Design: Juhee Kim",
-      "Installation: Lala Sound",
+    "title": "Sense Collection: Momentum",
+    "en_title": "",
+    "year": "2024",
+    "meta": [
+      "Director Yukyung Chung",
+      "Sound Jungmin Yoo, Sungjin Shin",
+      "Audio Dongjin Park",
+      "3D animation Heonsoo Choo, Inmo Sung",
+      "Design Juhee Kim",
+      "Installation Lala Sound",
       "Platform-L Machine Room, Seoul"
     ],
     "ko": [
@@ -917,20 +918,18 @@ const WORKS = [
   {
     "slug": "la_sylfid",
     "section": "project",
-    "title": "La_sylfid",
-    "tag": "",
-    "info": [
-      "La Sylphide - The Fairy of the Air",
-      "2025 / Artwork by Yoon Chung Han",
-      "Creative Director: Yoon Chung Han @artofyoonhan",
-      "Choreography Concept & Direction: Jinyeob Cha (collective A) @cha_jinyeob @collective_a",
-      "Co-choreography & Performance: Sohye Kim (collective A) @sohyesohye",
-      "Music: Maalib @maalib",
-      "3D Animation: Klaudia Olmstead @klau.olm",
-      "3D Background Particle Design: Heon Soo Choo @hunter_the_c",
-      "Data Source: AirKorea (airkorea.or.kr)",
-      "Participated as a 3D background particle design",
-      "Paradais city , Incheon, Korea"
+    "title": "라 실피드: 공기의 요정",
+    "en_title": "La Sylphide, The Fairy of the Air",
+    "year": "2025",
+    "meta": [
+      "Artwork by Yoon Chung Han",
+      "Choreography Jinyeob Cha (collective A)",
+      "Performance Sohye Kim (collective A)",
+      "Music Maalib",
+      "3D animation Klaudia Olmstead",
+      "3D background particle design Heon Soo Choo",
+      "Data AirKorea",
+      "Paradise City, Incheon"
     ],
     "ko": [
       "<라 실피드 (La Sylphide) - 공기의 요정>은 모션캡처 기술을 활용해 무용수의 움직임을 선과 파티클로 변환하고, 인천의 공기질 데이터를 시각화합니다. 지난 20년간의 실제 대기 오염 데이터를 기반으로 영상 속 파티클의 수와 색, 움직임을 조절하며, 공기의 질감, 속도감, 그리고 감정을 반영한 다채로운 시각적 레이어로 구성하여 표현한 작품입니다. 고전 발레 속 요정 ’실피드‘를 재해석한 이 작품 속에서, 실피드는 도시의 공기 속을 유영하며 오염 입자와 감정을 수집하고 시각적 풍경으로 그려냅니다. 실피드는 사람들 몰래 도시의 공기를 따라 유영하며, 숨겨진 감정과 오염된 입자를 수집하고 ‘숨의 기록’을 만들어냅니다. 그녀는 바람을 따라 이동하며 공기를 다시 흐르게 하고, 지구가 가진 자연의 호흡 리듬을 복원시키려 합니다. 이 작품은 과학적 데이터와 시적 상상력을 결합해 공기의 질감과 흐름을 감각적으로 경험하도록 유도하며, 관람자에게 숨과 환경, 도시를 새롭게 인식하게 합니다."
@@ -988,16 +987,16 @@ const WORKS = [
   {
     "slug": "seoul",
     "section": "project",
-    "title": "seoul",
-    "tag": "",
-    "info": [
-      "Unreal Performance : Zelkova Story",
-      "2025 / Artwork by Jin-yo Mok",
-      "Director : Jin-yo Mok",
-      "Sound : Yoon-Jeong Heo",
-      "VFX : Myungkyoon Ahn",
-      "3D art : Heonsoo Choo",
-      "support : C2 artechnolozy"
+    "title": "Unreal Performance: Zelkova Story",
+    "en_title": "",
+    "year": "2025",
+    "meta": [
+      "Artwork by Jin-yo Mok",
+      "Director Jin-yo Mok",
+      "Sound Yoon-Jeong Heo",
+      "VFX Myungkyoon Ahn",
+      "3D art Heonsoo Choo",
+      "Support C2 artechnology"
     ],
     "ko": [
       "대립, 통일, 분열을 반복하는 한국 현대사의 쟁점적 시도들과 그 흔적을 한 켜 한 켜의 나이테로 바라보는 관점의 언리얼 3막극."
