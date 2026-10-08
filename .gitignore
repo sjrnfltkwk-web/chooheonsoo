@@ -14,3 +14,7 @@ _cargo/*
 !_cargo/remains.json
 !_cargo/paperman.json
 !_cargo/la_sylfid.json
+
+# 사이트에 올리지 않는 작업 파일
+double.html
+media/double/
