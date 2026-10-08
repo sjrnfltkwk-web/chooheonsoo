@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>double — chooheonsoo</title>
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: rgba(0,0,0,.85); font: 14px/1.5 "Pretendard Variable", Pretendard, sans-serif; }
+nav { text-align: center; padding: 2.8rem 1rem 0; font-size: 1.1rem; }
+nav a { color: inherit; text-decoration: none; margin: 0 1.2rem; }
+main { max-width: 960px; margin: 0 auto; padding: 3rem 16px 5rem; }
+h1 { font-weight: 400; font-size: 1.6rem; text-align: center; margin: 0 0 .3rem; }
+.lead { text-align: center; opacity: .6; margin: 0 0 3rem; }
+.step { display: none; }
+[data-step="upload"] .s-upload, [data-step="busy"] .s-busy, [data-step="dress"] .s-dress, [data-step="done"] .s-done { display: block; }
+button, label.btn { font: inherit; background: none; border: 1px solid currentColor; border-radius: 0; padding: .5rem 1.2rem; cursor: pointer; color: inherit; display: inline-block; }
+.center { text-align: center; }
+.center > * { margin: 0 .3rem; }
+.s-busy p { text-align: center; opacity: .6; }
+.stage { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+.figure { position: relative; aspect-ratio: 1185 / 2000; background: url(media/double/mannequin.webp) center / contain no-repeat; }
+.figure.hot { outline: 1px dashed rgba(0,0,0,.3); }
+.figure > img.result { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.2s; background: #fff; }
+.figure.composed > img.result { opacity: 1; }
+.tray { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-content: start; min-height: 200px; }
+.piece { background-repeat: no-repeat; touch-action: none; cursor: grab; user-select: none; }
+.piece.dragging { cursor: grabbing; position: fixed; z-index: 10; pointer-events: none; }
+.piece.placed { position: absolute; cursor: default; mix-blend-mode: multiply; }
+.hint { text-align: center; opacity: .6; margin-top: 1.5rem; }
+.pair { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.pair img { width: 100%; display: block; }
+.pair figcaption { opacity: .6; font-size: .85em; margin-top: .3rem; }
+@media (max-width: 640px) { .stage { grid-template-columns: 1fr; } .pair { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-step="upload">
+<nav><a href="main">Artwork</a><a href="project">Project</a><a href="about">About</a></nav>
+<main>
+  <h1>double</h1>
+  <p class="lead">당신이 입은 것만 남겨, 얼굴 없는 몸에 입힌다.</p>
+
+  <section class="step s-upload center">
+    <label class="btn">사진 올리기<input id="file" type="file" accept="image/*" hidden></label>
+    <button id="sample">예시로 보기</button>
+  </section>
+
+  <section class="step s-busy"><p id="busy">옷을 벗기는 중…</p></section>
+
+  <section class="step s-dress">
+    <div class="stage">
+      <div class="figure" id="figure"><img class="result" id="result" alt=""></div>
+      <div class="tray" id="tray"></div>
+    </div>
+    <p class="hint">옷을 몸으로 끌어다 놓으세요.</p>
+  </section>
+
+  <section class="step s-done">
+    <div class="pair">
+      <figure><img id="out-photo" alt=""><figcaption>원본</figcaption></figure>
+      <figure><img id="out-flat" alt=""><figcaption>벗겨낸 것</figcaption></figure>
+      <figure><img id="out-double" alt=""><figcaption>분신</figcaption></figure>
+    </div>
+    <p class="center" style="margin-top:2rem"><a id="save" download="double.png"><button>저장</button></a> <button id="again">다시</button></p>
+  </section>
+</main>
+
+<script>
+// ponytail: API 없으면 예시 이미지로 동작. 키는 이 정적 페이지에 두면 안 되므로 서버(Worker 등)를 거친다.
+const API = null; // 예: 'https://double.<계정>.workers.dev'
+
+// 벗겨낸 이미지 안의 각 옷 위치(src)와 마네킹 위 자리(dst), 둘 다 % 단위
+const DEMO_ITEMS = [
+  { name: 'glasses',  src: [44, 0, 15, 5],   dst: [38, 8, 24, 5] },
+  { name: 'shirt',    src: [21, 4, 58, 41],  dst: [18, 16, 64, 29] },
+  { name: 'pants',    src: [25, 43, 50, 43], dst: [28, 42, 44, 46] },
+  { name: 'slippers', src: [12, 84, 74, 10], dst: [14, 90, 72, 9] },
+];
+
+async function post(path, body) {
+  const r = await fetch(API + path, { method: 'POST', body });
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+// 사람 사진 → 흰 배경 위 옷만 { flatlay: url, items }
+async function extract(photo) {
+  if (!API) return wait(1500, { flatlay: 'media/double/sample-flatlay.webp', items: DEMO_ITEMS });
+  const f = new FormData(); f.append('photo', photo);
+  return post('/extract', f);
+}
+
+// 벗겨낸 옷 → 마네킹에 입힌 이미지 url
+async function compose(flatlay) {
+  if (!API) return wait(1500, 'media/double/sample-result.webp');
+  const f = new FormData(); f.append('flatlay', flatlay);
+  return (await post('/compose', f)).image;
+}
+
+const wait = (ms, v) => new Promise(r => setTimeout(() => r(v), ms));
+const $ = id => document.getElementById(id);
+const step = s => document.body.dataset.step = s;
+let photoUrl, flat;
+
+$('file').onchange = e => e.target.files[0] && start(e.target.files[0]);
+$('sample').onclick = async () => start(await (await fetch('media/double/sample-photo.webp')).blob());
+$('again').onclick = () => location.reload();
+
+async function start(photo) {
+  photoUrl = URL.createObjectURL(photo);
+  step('busy'); $('busy').textContent = '옷을 벗기는 중…';
+  try {
+    flat = await extract(photo);
+    flat.items.forEach(makePiece);
+    step('dress');
+  } catch (err) { alert('실패: ' + err.message); step('upload'); }
+}
+
+function crop(el, [x, y, w, h], width) {
+  // 벗겨낸 이미지에서 [x,y,w,h]% 영역만 보이게
+  el.style.width = width + 'px';
+  el.style.aspectRatio = `${w * 1280} / ${h * 1714}`;
+  el.style.backgroundImage = `url(${flat.flatlay})`;
+  el.style.backgroundSize = `${10000 / w}% auto`;
+  el.style.backgroundPosition = `${x / (100 - w || 1) * 100}% ${y / (100 - h || 1) * 100}%`;
+}
+// ponytail: 1280×1714 비율은 예시 이미지 기준. 실제 API는 크기도 같이 돌려주게 할 것
+
+function makePiece(item) {
+  const el = document.createElement('div');
+  el.className = 'piece';
+  crop(el, item.src, Math.max(60, item.src[2] * 3));
+  $('tray').append(el);
+  el.onpointerdown = e => {
+    const r = el.getBoundingClientRect(), dx = e.clientX - r.left, dy = e.clientY - r.top;
+    el.setPointerCapture(e.pointerId);
+    el.classList.add('dragging');
+    const move = ev => {
+      el.style.left = ev.clientX - dx + 'px'; el.style.top = ev.clientY - dy + 'px';
+      $('figure').classList.toggle('hot', over(ev));
+    };
+    move(e);
+    el.onpointermove = move;
+    el.onpointerup = ev => {
+      el.onpointermove = el.onpointerup = null;
+      el.classList.remove('dragging'); $('figure').classList.remove('hot');
+      el.style.left = el.style.top = '';
+      if (over(ev)) place(el, item);
+    };
+  };
+}
+
+const over = e => {
+  const r = $('figure').getBoundingClientRect();
+  return e.clientX > r.left && e.clientX < r.right && e.clientY > r.top && e.clientY < r.bottom;
+};
+
+function place(el, item) {
+  const [x, y, w] = item.dst;
+  el.onpointerdown = null;
+  el.classList.add('placed');
+  crop(el, item.src, 0);
+  Object.assign(el.style, { width: w + '%', left: x + '%', top: y + '%' });
+  $('figure').append(el);
+  if (!$('tray').children.length) finish();
+}
+
+async function finish() {
+  try {
+    const flatBlob = await (await fetch(flat.flatlay)).blob();
+    const img = await compose(flatBlob);
+    $('result').src = img;
+    await new Promise(r => $('result').onload = r);
+    $('figure').classList.add('composed');
+    await wait(2000);
+    $('out-photo').src = photoUrl; $('out-flat').src = flat.flatlay; $('out-double').src = img;
+    $('save').href = img;
+    step('done');
+  } catch (err) { alert('실패: ' + err.message); }
+}
+</script>
+</body>
+</html>

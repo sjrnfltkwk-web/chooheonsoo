@@ -94,6 +94,9 @@ const site = fs.readFileSync(path.join(__dirname, 'site.css'), 'utf8').replace(/
   // Cargo drives every text style through --font-size so an inline --font-scale multiplies it
   .replace(/font-size:\s*([\d.]+rem);/g, '--font-size: $1; font-size: calc(var(--font-scale, 1) * var(--font-size));');
 fs.writeFileSync(path.join(ROOT, 'site.css'), site);
+// cache-busting: GitHub Pages caches assets ~10 min, so a new page could pair with a stale stylesheet
+const ver = require('crypto').createHash('sha1')
+  .update(['cargo.css', 'cargo.js', 'site.css'].map(f => fs.readFileSync(path.join(ROOT, f))).join('')).digest('hex').slice(0, 8);
 
 for (const p of PAGES) {
   const d = JSON.parse(fs.readFileSync(path.join(__dirname, p + '.json'), 'utf8'));
@@ -121,13 +124,13 @@ for (const p of PAGES) {
 <title>${title}</title>
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="cargo.css">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="cargo.css?v=${ver}">
+<link rel="stylesheet" href="site.css?v=${ver}">
 <style>
 ${d.local_css || ''}
 ${mobileCss(d.local_css || '')}${grad ? `body { background-color: ${grad}; }` : ''}
 </style>
-<script src="cargo.js" defer></script>
+<script src="cargo.js?v=${ver}" defer></script>
 </head>
 <body class="${p === 'main' ? 'home' : ''}">
 ${backdrop}<div class="content">
