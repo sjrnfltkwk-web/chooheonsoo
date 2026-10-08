@@ -30,6 +30,8 @@ const FIXES = [
   ['search-1', '검색/ Search', '검색 / Search'],
   ['0-1-dgree', '1080x1920', '1080 x 1920'],
   ['brain', 'Never Die', 'Never Dies'],
+  // leftover hover caption on one thumbnail only
+  ['main', /\s*<div class="hover-text"><div style="text-align: right">PROJECT REMAINS<\/div><\/div>\s*/, ''],
   // confirmed by the artist: the artist's name is Yoon-Jeong Han, momentum was 2024
   ['see-unseen', 'Yoon Chung Han', 'Yoon-Jeong Han'],
   ['la_sylfid', 'Yoon Chung Han', 'Yoon-Jeong Han'],
