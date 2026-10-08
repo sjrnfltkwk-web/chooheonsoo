@@ -92,6 +92,14 @@ document.querySelectorAll('gallery-slideshow').forEach(g => {
   g.addEventListener('click', () => { i = (i + 1) % items.length; show(); });
   show();
 });
+// page backdrop: cycle images every data-time seconds
+document.querySelectorAll('.backdrop').forEach(b => {
+  const imgs = [...b.children], t = (+b.dataset.time || 10);
+  b.style.setProperty('--t', t + 's');
+  if (imgs.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let i = 0;
+  setInterval(() => { imgs[i].classList.remove('on'); i = (i + 1) % imgs.length; imgs[i].loading = 'eager'; imgs[i].classList.add('on'); }, t * 1000);
+});
 // digital-clock
 document.querySelectorAll('digital-clock').forEach(c => {
   const tick = () => c.textContent = new Date().toLocaleTimeString('en-GB');

@@ -37,6 +37,14 @@ gallery-slideshow { display: block; width: 100%; cursor: pointer; }
 .mi:hover .hover-text { opacity: 1; }
 .icon-link { text-decoration: none !important; }
 h1.nav { white-space: nowrap; }
+
+/* full-screen page backdrop (Cargo morphovision, approximated: crossfade + slow push-in) */
+.backdrop { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: #000; }
+.backdrop img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.5s ease; }
+.backdrop img.on { opacity: 1; animation: push var(--t, 10s) ease-out both; }
+@keyframes push { from { transform: scale(1); } to { transform: scale(1.06); } }
+@media (prefers-reduced-motion: reduce) { .backdrop img.on { animation: none; } }
+.backdrop + .content { z-index: 1; }
 .ti { font-family: system-ui, sans-serif; }
 [data-zoom] { cursor: zoom-in; }
 

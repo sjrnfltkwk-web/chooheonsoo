@@ -100,6 +100,19 @@ for (const p of PAGES) {
   const byHash = Object.fromEntries(d.media.map(m => [m.hash, m]));
   const bd = d.backdrops || {}, grad = bd.activeBackdrop === 'gradient' && bd.backdropSettings?.gradient?.['color-one'];
   const title = p === 'main' ? 'chooheonsoo' : `${d.title} — chooheonsoo`;
+  // Cargo's "morphovision" backdrop: full-screen page images cycling behind the content (brain page; its text is white)
+  let backdrop = '';
+  const mv = bd.activeBackdrop === 'legacy/morphovision' && bd.backdropSettings['legacy/morphovision'];
+  if (mv) {
+    // Cargo cycles the page's images minus `excluded` (the configured start image is itself excluded here)
+    let pool = d.media.filter(m => m.is_image && !mv.excluded.includes(m.hash)).map(m => m.hash);
+    if (!pool.length) pool = [mv.image];
+    backdrop = `<div class="backdrop" data-time="${mv.transition_time || 10}">${pool.map((h, i) => {
+      const m = byHash[h]; const file = `media/${h}.webp`;
+      downloads.set(file, `https://freight.cargo.site/w/${Math.min(m.width, 2400)}/q/88/f/webp/i/${h}/${encodeURIComponent(m.name)}`);
+      return `<img src="${file}" alt=""${i ? ' loading="lazy"' : ' class="on"'}>`;
+    }).join('')}</div>\n`;
+  }
   const out = `<!doctype html>
 <html lang="ko">
 <head>
@@ -117,7 +130,7 @@ ${mobileCss(d.local_css || '')}${grad ? `body { background-color: ${grad}; }` : 
 <script src="cargo.js" defer></script>
 </head>
 <body class="${p === 'main' ? 'home' : ''}">
-<div class="content">
+${backdrop}<div class="content">
 <div class="page" id="${d.id}"><div class="page-layout"><div class="page-content"><bodycopy>
 ${convert(fix(p, d.content), byHash)}
 </bodycopy></div></div></div>
